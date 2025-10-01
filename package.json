@@ -10,13 +10,17 @@
     "create-vectorize": "wrangler vectorize create pdf-search-index --dimensions=768 --metric=cosine"
   },
   "dependencies": {
+    "@ai-sdk/google": "^2.0.17",
+    "@ai-sdk/openai": "^2.0.42",
     "@types/node-fetch": "^2.6.13",
+    "ai": "^5.0.59",
     "dotenv": "^17.2.2",
     "next": "15.5.4",
     "node-fetch": "^3.3.2",
     "pdf-parse": "^1.1.1",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250927.0",
