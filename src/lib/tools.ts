@@ -49,41 +49,6 @@ export const getWeather = tool({
     }
   },
 });
-
-// Calculator tool - performs mathematical calculations
-export const calculate = tool({
-  description: "Perform mathematical calculations. Use this for arithmetic operations like addition, subtraction, multiplication, division, and basic math expressions.",
-  parameters: z.object({
-    expression: z.string().describe("Mathematical expression to evaluate"),
-  }).describe("Calculator parameters"),
-  execute: async ({ expression }) => {
-    try {
-      // Safe evaluation - only allow numbers and basic operators
-      const sanitized = expression.replace(/[^0-9+\-*/().\s]/g, '');
-
-      if (sanitized !== expression) {
-        return {
-          error: "Invalid expression. Only numbers and basic operators (+, -, *, /, parentheses) are allowed.",
-          expression,
-        };
-      }
-
-      // Use Function constructor for safe evaluation
-      const result = Function(`"use strict"; return (${sanitized})`)();
-
-      return {
-        expression: expression,
-        result: result,
-      };
-    } catch (error) {
-      return {
-        error: `Failed to calculate: ${error instanceof Error ? error.message : 'Invalid expression'}`,
-        expression,
-      };
-    }
-  },
-});
-
 // Time tool - gets current time in different timezones
 export const getTime = tool({
   description: "Get current time and date information for any timezone or location. Use this when users ask about current time, date, or time in different locations.",
@@ -118,6 +83,5 @@ export const getTime = tool({
 // Export all tools as a collection
 export const tools = {
   getWeather,
-  calculate,
   getTime,
 };
