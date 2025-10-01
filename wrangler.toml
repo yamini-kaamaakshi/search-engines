@@ -1,0 +1,10 @@
+name = "search-engine"
+main = "src/worker.ts"
+compatibility_date = "2024-03-18"
+
+[ai]
+binding = "AI"
+
+[[vectorize]]
+binding = "VECTORIZE_DB"
+index_name = "search-documents-dev"
